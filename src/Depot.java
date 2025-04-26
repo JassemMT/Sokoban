@@ -1,0 +1,1 @@
+class Depot extends Element{}

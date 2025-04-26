@@ -1,0 +1,1 @@
+class Caisse extends Element{}
