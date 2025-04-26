@@ -7,7 +7,7 @@ public class MainJeu {
         Jeu jeu = new Jeu();
 
         // Charger un jeu depuis un fichier (par exemple, "labyrinthe.txt")
-        jeu = Chargement.chargerJeu("labyrinthe.txt");
+        jeu = Chargement.chargerJeu("../laby/laby.txt");
 
         // Afficher le jeu initial
         System.out.println("Jeu chargé avec succès!");
