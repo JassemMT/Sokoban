@@ -37,7 +37,7 @@ class Element {
                 this.y += 1;
                 break;
             default:
-                throw new IllegalArgumentException("Action invalide : " + action);  // Lancer une exception pour gérer les actions invalides
+                System.out.println("Action invalide : " + action);  // Lancer une exception pour gérer les actions invalides
         }
     }
 

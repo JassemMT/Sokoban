@@ -10,8 +10,18 @@ class Jeu {
     static final String DROITE = "droite";
     static final String GAUCHE = "gauche";
 
+
+    Jeu() {
+        perso = new Perso(0,0);
+        caisses = new ListeElements();
+        depots = new ListeElements();
+        laby = new Labyrinthe();
+    }
+
+
     // Condition de fin - Renvoie true si le jeu est fini
     boolean etreFini() {
+
         for (Element c : caisses.liste) {
             boolean trouve = false;
             int x = c.getX();
@@ -30,24 +40,13 @@ class Jeu {
                 return false;
             }
         }
+
+
+
         return true;
     }
 
-    // Obtient les coordonnées suivantes selon l'action
-    int[] getSuivant(int x, int y, String action) {
-        switch (action) {
-            case HAUT:
-                return new int[]{x, y - 1};
-            case BAS:
-                return new int[]{x, y + 1};
-            case DROITE:
-                return new int[]{x + 1, y};
-            case GAUCHE:
-                return new int[]{x - 1, y};
-            default:
-                return null;
-        }
-    }
+
 
     // Récupérer un élément à une position donnée
     Element getElement(int x, int y) {
@@ -63,7 +62,25 @@ class Jeu {
                 return e;
             }
         }
+
         return null;
+    }
+
+    // Obtient les coordonnées suivantes selon l'action
+    int[] getSuivant(int x, int y, String action) {
+        switch (action) {
+            case HAUT:
+                return new int[]{x, y - 1};
+            case BAS:
+                return new int[]{x, y + 1};
+            case DROITE:
+                return new int[]{x + 1, y};
+            case GAUCHE:
+                return new int[]{x - 1, y};
+            default:
+                System.out.println("Erreur");
+                return new int[]{x, y};
+        }
     }
 
     // Déplacer le personnage
@@ -116,10 +133,13 @@ class Jeu {
 
     // Convertir le jeu en chaîne pour affichage
     String jeuToString() {
+
+        System.out.println("perso : " + perso.toString());
+
         StringBuilder sb = new StringBuilder();
 
-        for (int x = 0; x < laby.getHauteur(); x++) {
-            for (int y = 0; y < laby.getLargeur(); y++) {
+        for (int y = 0; y < laby.getHauteur(); y++) {
+            for (int x = 0; x < laby.getLargeur(); x++) {
                 sb.append(getChar(x, y));
             }
             sb.append('\n');

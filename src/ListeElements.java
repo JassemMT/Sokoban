@@ -4,6 +4,9 @@ class ListeElements{
 
     ArrayList<Element> liste;
 
+    ListeElements(){
+        liste = new ArrayList<Element>();
+    }
     void ajouterElement(Element element) {
         liste.add(element);
     }
