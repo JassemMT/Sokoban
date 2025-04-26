@@ -5,59 +5,60 @@ class Jeu {
     ListeElements depots;
     Labyrinthe laby;
 
-    String HAUT = "Haut";
+    static String HAUT = "Haut";
     String BAS = "bas";
     String DROITE = "droite";
     String GAUCHE = "gauche";
 
-    /*
-        Condition de fin
-        Renvoi true si le jeu est fini
-    */
-    static boolean etreFini(){
-        boolean trouve;
+    // Condition de fin - Renvoie true si le jeu est fini
+    boolean etreFini() {
+        for (Element c : caisses.liste) {
+            boolean trouve = false;
+            int x = c.getX();
+            int y = c.getY();
 
-        for(c : caisses){
-            trouve = false;
-            int x = c.getX;
-            int y = c.getY;
-
-            //On verifie chaque dépôt
-            for(d : depots){
-                if(x=d.getX && y=d.getY){
-                    trouve = true ;
+            // On vérifie chaque dépôt
+            for (Element d : depots.liste) {
+                if (x == d.getX() && y == d.getY()) {
+                    trouve = true;
+                    break;
                 }
             }
-            //Si une des caisses n'est ps sur un depots, alors le jeu continue
-            if(trouve==false){
+
+            // Si une des caisses n'est pas sur un dépôt, alors le jeu continue
+            if (!trouve) {
                 return false;
             }
         }
         return true;
     }
 
-    static int[] getSuivant(int x, int y, String action){
-        switch(action){
+    // Obtient les coordonnées suivantes selon l'action
+    int[] getSuivant(int x, int y, String action) {
+        switch (action) {
             case HAUT:
-                return new int[]{x, y-1};
-                break;
+                return new int[]{x, y - 1};
             case BAS:
-                return new int[]{x, y+1};
-                break;
+                return new int[]{x, y + 1};
             case DROITE:
-                return new int[]{x+1, y};
-                break;
-            case GAUCHE :
-                return new int[]{x-1, y};
-                break;
+                return new int[]{x + 1, y};
+            case GAUCHE:
+                return new int[]{x - 1, y};
             default:
                 return null;
-
         }
     }
 
-    public Element getElement(int x, int y) {
-        for (Element e : elements) {
+    // Récupérer un élément à une position donnée
+    Element getElement(int x, int y) {
+        // Recherche dans les caisses
+        for (Element e : caisses.liste) {
+            if (e.getX() == x && e.getY() == y) {
+                return e;
+            }
+        }
+        // Recherche dans les dépôts si non trouvé parmi les caisses
+        for (Element e : depots.liste) {
             if (e.getX() == x && e.getY() == y) {
                 return e;
             }
@@ -65,7 +66,7 @@ class Jeu {
         return null;
     }
 
-
+    // Déplacer le personnage
     void deplacerPerso(String action) {
         int x = perso.getX();
         int y = perso.getY();
@@ -78,7 +79,7 @@ class Jeu {
         if (laby.etreMur(cx, cy)) return;
 
         // Caisse présente ?
-        Element caisse = caisses.getElement(cx, cy);
+        Element caisse = getElement(cx, cy);
 
         if (caisse == null) {
             // Case vide ou dépôt : déplacement libre
@@ -89,28 +90,22 @@ class Jeu {
             int cx2 = cible2[0];
             int cy2 = cible2[1];
 
-            if (!laby.etreMur(cx2, cy2) && caisses.getElement(cx2, cy2) == null) {
+            if (!laby.etreMur(cx2, cy2) && getElement(cx2, cy2) == null) {
                 caisse.deplacement(action);
                 perso.deplacement(action);
             }
         }
     }
 
-
-
-
-
-    /*
-    savoir quoi afficher à une case donnée.
-     */
+    // Savoir quoi afficher à une case donnée
     char getChar(int x, int y) {
         if (perso.getX() == x && perso.getY() == y) return '@';
 
-        for (Element c : caisses) {
+        for (Element c : caisses.liste) {
             if (c.getX() == x && c.getY() == y) return '$';
         }
 
-        for (Element d : depots) {
+        for (Element d : depots.liste) {
             if (d.getX() == x && d.getY() == y) return '.';
         }
 
@@ -119,6 +114,7 @@ class Jeu {
         return ' ';
     }
 
+    // Convertir le jeu en chaîne pour affichage
     String jeuToString() {
         StringBuilder sb = new StringBuilder();
 
@@ -131,10 +127,4 @@ class Jeu {
 
         return sb.toString();
     }
-
-
-
-
-
-
 }
