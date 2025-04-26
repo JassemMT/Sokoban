@@ -5,10 +5,10 @@ class Jeu {
     ListeElements depots;
     Labyrinthe laby;
 
-    static String HAUT = "Haut";
-    String BAS = "bas";
-    String DROITE = "droite";
-    String GAUCHE = "gauche";
+    static final String HAUT = "Haut";
+    static final String BAS = "bas";
+    static final String DROITE = "droite";
+    static final String GAUCHE = "gauche";
 
     // Condition de fin - Renvoie true si le jeu est fini
     boolean etreFini() {
