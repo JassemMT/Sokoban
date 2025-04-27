@@ -1,3 +1,5 @@
+package jeu;
+
 class Caisse extends Element {
     boolean isMovable;
 
@@ -12,6 +14,6 @@ class Caisse extends Element {
 
     @Override
     public String toString() {
-        return "Caisse à la position " + super.toString() + " (Déplaçable: " + isMovable + ")";
+        return "jeu.Caisse à la position " + super.toString() + " (Déplaçable: " + isMovable + ")";
     }
 }

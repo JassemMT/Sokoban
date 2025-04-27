@@ -1,4 +1,6 @@
-class Depot extends Element {
+package jeu;
+
+public class Depot extends Element {
     boolean isOccupied;
 
     Depot(int x, int y, boolean isOccupied) {
@@ -16,6 +18,6 @@ class Depot extends Element {
 
     @Override
     public String toString() {
-        return "Depot à la position " + super.toString() + " (Occupé: " + isOccupied + ")";
+        return "jeu.Depot à la position " + super.toString() + " (Occupé: " + isOccupied + ")";
     }
 }

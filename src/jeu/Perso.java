@@ -1,3 +1,5 @@
+package jeu;
+
 class Perso extends Element {
     String name;
 
@@ -11,6 +13,6 @@ class Perso extends Element {
 
     @Override
     public String toString() {
-        return "Perso " + name + " à la position " + super.toString();
+        return "jeu.Perso " + name + " à la position " + super.toString();
     }
 }
