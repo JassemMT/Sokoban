@@ -5,7 +5,7 @@ class Jeu {
     ListeElements depots;
     Labyrinthe laby;
 
-    static final String HAUT = "Haut";
+    static final String HAUT = "haut";
     static final String BAS = "bas";
     static final String DROITE = "droite";
     static final String GAUCHE = "gauche";
@@ -49,6 +49,17 @@ class Jeu {
 
 
     // Récupérer un élément à une position donnée
+    boolean estCaisse(int x, int y) {
+        // Recherche dans les caisses
+        for (Element e : caisses.liste) {
+            if (e.getX() == x && e.getY() == y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Récupérer un élément à une position donnée
     Element getElement(int x, int y) {
         // Recherche dans les caisses
         for (Element e : caisses.liste) {
@@ -62,7 +73,6 @@ class Jeu {
                 return e;
             }
         }
-
         return null;
     }
 
@@ -95,10 +105,7 @@ class Jeu {
         // Mur : déplacement impossible
         if (laby.etreMur(cx, cy)) return;
 
-        // Caisse présente ?
-        Element caisse = getElement(cx, cy);
-
-        if (caisse == null) {
+        if (!estCaisse(cx, cy)) {
             // Case vide ou dépôt : déplacement libre
             perso.deplacement(action);
         } else {
@@ -107,8 +114,8 @@ class Jeu {
             int cx2 = cible2[0];
             int cy2 = cible2[1];
 
-            if (!laby.etreMur(cx2, cy2) && getElement(cx2, cy2) == null) {
-                caisse.deplacement(action);
+            if (!laby.etreMur(cx2, cy2) && !(estCaisse(cx2, cy2))) {
+                getElement(cx,cy).deplacement(action);
                 perso.deplacement(action);
             }
         }
