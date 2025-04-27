@@ -1,4 +1,3 @@
-Voici un exemple de `README.md` complet pour votre projet. N'hésitez pas à adapter les sections en fonction des spécificités de votre travail et des technologies utilisées :
 
 ```markdown
 # Projet Jeu - Système de Labyrinthe
