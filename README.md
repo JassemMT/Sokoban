@@ -20,24 +20,6 @@ Le projet est organisé en plusieurs packages afin de bien séparer les responsa
 - `graphisme` : Contient les classes pour l'interface graphique, utilisée pour afficher le jeu.
 - `test` : Contient les tests unitaires pour valider le comportement des différentes classes et méthodes du jeu.
 
-### Arborescence
-
-```
-src/
-├── jeu/
-│   ├── Jeu.java
-│   ├── Perso.java
-│   ├── Element.java
-│   ├── ListeElements.java
-│   └── Labyrinthe.java
-├── graphisme/
-│   ├── InterfaceGraphique.java
-│   └── FenetreJeu.java
-└── test/
-    ├── JeuTest.java
-    └── LabyrintheTest.java
-```
-
 ## Fonctionnalités
 
 ### 1. Déplacement du Personnage
