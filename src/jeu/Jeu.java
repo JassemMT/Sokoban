@@ -114,4 +114,8 @@ public class Jeu {
         }
         return sb.toString();
     }
+
+    public Perso getPj(){
+        return perso;
+    }
 }

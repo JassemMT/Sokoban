@@ -10,10 +10,12 @@ public class MainJeu {
     public static void main(String[] args) {
         // Créer un objet jeu.Jeu
         Jeu jeu = new Jeu();
+        String nomFichier = "laby/laby.txt";
+
 
         try {
             // Charger un jeu depuis un fichier (par exemple, "labyrinthe.txt")
-            jeu = Chargement.chargerJeu("laby/laby.txt");
+            jeu = Chargement.chargerJeu(nomFichier);
 
             // Afficher le jeu initial
             System.out.println("jeu.Jeu chargé avec succès!");

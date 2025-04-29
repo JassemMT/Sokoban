@@ -33,7 +33,7 @@ public class Labyrinthe {
     void setDimensions(int largeur, int hauteur) {
         this.largeur = largeur;
         this.hauteur = hauteur;
-        murs = new boolean[largeur][hauteur];  // Notez que l'indexation est murs[x][y] où x est la colonne et y est la ligne
+        murs = new boolean[largeur][hauteur];
     }
 
     // Vérifier si (x, y) correspond à un mur

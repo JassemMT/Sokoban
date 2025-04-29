@@ -14,6 +14,7 @@ public class Chargement {
         // Première lecture : récupérer les dimensions
         try (BufferedReader br = new BufferedReader(new FileReader(nomFichier))) {
             String line;
+
             while ((line = br.readLine()) != null) {
                 max_colonne = Math.max(max_colonne, line.length());
                 ligne++;
@@ -39,16 +40,16 @@ public class Chargement {
                     char lecture = line.charAt(colonne);
 
                     switch (lecture) {
-                        case '#':
+                        case Labyrinthe.MUR:
                             jeu.laby.setMur(colonne, ligne);
                             break;
-                        case '$':
+                        case Labyrinthe.CAISSE:
                             jeu.caisses.liste.add(new Caisse(colonne, ligne, true));
                             break;
-                        case '.':
+                        case Labyrinthe.DEPOT:
                             jeu.depots.liste.add(new Depot(colonne, ligne, false));
                             break;
-                        case '@':
+                        case Labyrinthe.PJ:
                             jeu.perso.setPosition(colonne, ligne);
                             break;
                         case ' ':
