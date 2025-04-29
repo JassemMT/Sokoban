@@ -13,7 +13,7 @@ public class MainJeu {
 
         try {
             // Charger un jeu depuis un fichier (par exemple, "labyrinthe.txt")
-            jeu = Chargement.chargerJeu("../laby/laby.txt");
+            jeu = Chargement.chargerJeu("laby/laby.txt");
 
             // Afficher le jeu initial
             System.out.println("jeu.Jeu chargé avec succès!");
